@@ -48,6 +48,11 @@ def cont_button_clicked():
     user_first_card.pack(side=LEFT, padx=5)
     user_card_list.append(user_card)
     print(user_card_list)
+
+    # Güncellenen user_sum
+    global user_sum
+    user_sum = sum(user_card_list)
+
     # CPU card
     cpu_card = random.randint(1,10) # cpu card config
     cpu_first_card = Label(text=f"{cpu_card}")
@@ -57,6 +62,15 @@ def cont_button_clicked():
     cpu_card_list.append(cpu_card)
     print(cpu_card_list)
 
+    # güncellenen cpu sum
+
+    global cpu_sum
+    cpu_sum = sum(cpu_card_list)
+
+    #oyun sonu
+
+    game_end()
+
 
 cont_button = Button(text="Kart Çek", command= cont_button_clicked)
 cont_button.pack()
@@ -64,23 +78,27 @@ cont_button.pack()
 user_sum = sum(user_card_list)
 cpu_sum = sum(cpu_card_list)
 
-user_len = len(user_card_list)
-cpu_len = len(cpu_card_list)
+
 
 
 def game_end():
-    if user_sum > 21 and user_len > 2:
+    print(f"user_sum:{user_sum} ")
+    print(f"cpu sum: {cpu_sum} ")
+    if user_sum > 21 >= cpu_sum:
         print("CPU kazandı")
-    elif cpu_sum > 21 and cpu_len > 2:
+    elif cpu_sum > 21 >= user_sum:
         print("KAZANDINIZ")
-    elif user_sum == 21:
+    elif user_sum == 21 and cpu_sum != 21:
         print("KAZANDINIZ")
-    elif cpu_sum == 21:
-        print("CPU kazndı")
+    elif cpu_sum == 21 and user_sum != 21:
+        print("CPU kazandı")
+    elif user_sum > 21 and cpu_sum > 21:
+        print("BERABERE")
+
 
 
 
 
 game_start()
-game_end()
+
 window.mainloop()
