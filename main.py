@@ -56,14 +56,10 @@ def cont_button_clicked():
     user_sum = sum(user_card_list)
     user_score_label.config(text=f"Toplam: {user_sum}")
 
+
+
     # CPU card
-    cpu_card = random.randint(1,10) # cpu card config
-    cpu_first_card = Label(text=f"{cpu_card}")
-    cpu_first_card.config(bg="purple")
-    cpu_first_card.config(fg="white")
-    cpu_first_card.pack(side=RIGHT, padx=5)
-    cpu_card_list.append(cpu_card)
-    print(cpu_card_list)
+    cpu_card_append()
 
     # güncellenen cpu sum
 
@@ -73,15 +69,27 @@ def cont_button_clicked():
 
 
 
+
+
     #oyun sonu
 
     game_end()
 
-
-
-
 cont_button = Button(text="Kart Çek", command= cont_button_clicked)
 cont_button.pack()
+
+
+def cpu_card_append():
+    if stop_button_clicked and user_sum < cpu_sum < 21 and user_sum < cpu_sum >= 17:
+        pass
+    else:
+        cpu_card = random.randint(1,10) # cpu card config
+        cpu_first_card = Label(text=f"{cpu_card}")
+        cpu_first_card.config(bg="purple")
+        cpu_first_card.config(fg="white")
+        cpu_first_card.pack(side=RIGHT, padx=5)
+        cpu_card_list.append(cpu_card)
+        print(cpu_card_list)
 
 
 def stop_button_clicked():
