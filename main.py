@@ -80,7 +80,7 @@ cont_button.pack()
 
 
 def cpu_card_append():
-    if stop_button_clicked and user_sum < cpu_sum < 21 and user_sum < cpu_sum >= 17:
+    if stop_button_clicked and 21 > cpu_sum > user_sum < cpu_sum >= 17:
         pass
     else:
         cpu_card = random.randint(1,10) # cpu card config
